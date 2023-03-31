@@ -29,9 +29,10 @@ spec:
   - name: mysql
     imagePullPolicy: Always
     image: gopalareddy/mysql:k8
-    -configMapRef:
+    envFrom:
+    - configMapRef:
        name: mysql-config
-    -secretRef:
+    - secretRef:
        name: mysql-secret
     ports:
      - containerPort: 3306
