@@ -6,6 +6,7 @@ metadata:
 data:
  MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
  MYSQL_DATABASE: "cities"
+
 ---
 apiVersion: v1
 kind: Secret
@@ -28,10 +29,10 @@ spec:
   - name: mysql
     imagePullPolicy: Always
     image: gopalareddy/mysql:k8
-    - configMapRef:
-        name: mysql-config
-    - secretRef:
-        name: mysql-secret
+    -configMapRef:
+       name: mysql-config
+    -secretRef:
+       name: mysql-secret
     ports:
      - containerPort: 3306
     resources:
