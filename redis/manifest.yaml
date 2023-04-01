@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+ name: redis
+ labels:
+  server: redis
+  tier: db
+spec:
+ containers:
+  - name: redis
+    imagePullPolicy: Always
+    image: redis
+    ports:
+     - containerPort: 6379
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: redis
+spec:
+ selector:
+  server: redis
+  tier: db
+ ports:
+  - protocol: TCP
+    port: 6379
+    targetPort: 6379
+ 
